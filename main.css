@@ -20,6 +20,23 @@ body {
   margin-top: 30px;
 }
 
+.box {
+  display: none;
+}
+
+.box_active {
+  display: block;
+}
+
+.contactsContainer li {
+  padding-bottom: 7px;
+  border-bottom: 3px dotted #9a9a9a;
+  list-style-type: none;
+}
+.contactsContainer p {
+  margin: 0;
+}
+
 .repository-link {
   margin: 10px 0 30px 0;
   color: #000;
@@ -31,11 +48,30 @@ body {
   border-bottom: 2px solid #000;
 }
 
-.delete__btn {
-  border: none;
+.delete__btn, .edit__btn {
+  margin: 0px 5px;
+  border: 1px solid #4d3939;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  display: inline;
   background: #ca9c9c;
-  height: 30px;
-  width: 123px;
+  height: 33px;
+  width: 43%;
+}
+
+.column__element ul {
+  padding: 0;
+}
+.column__element ul li {
+  list-style-type: none;
+  margin: 12px 0;
+  border-bottom: 3px dotted #896b6b;
+  list-style-type: none;
+}
+.column__element ul li p {
+  margin: 0;
+  color: #302f2f;
+  margin: 5px;
 }
 
 .input__container {
