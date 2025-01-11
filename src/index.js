@@ -35,6 +35,20 @@ document.querySelector('.js-search-popup-bg').addEventListener('click', toggleSe
 document.querySelector('.js-edit-popup-bg').addEventListener('click', toggleEditPopUp)
 document.querySelector('.search-popup__input').addEventListener('input', findContact)
 
+
+document.querySelectorAll('.element').forEach(
+    el=>{
+        el.addEventListener('click', function(){
+            console.log(this.querySelector('.box'))
+
+            this.querySelector('.box')?.classList?.toggle('box_active')
+        })
+    }
+)
+
+
+
+
 const removeItemAndCounter = (prevBox, prevCounter, deleteOnlyValue) => {
     if (prevBox) {
         prevBox.remove()
@@ -122,7 +136,7 @@ const deleteChoosenContact = (contactElement, arrayContacts, filteredArrItem) =>
     createContainerForContactsOnTable(filteredArrItem, arrayContacts)
 }
 
-const editChoosenContact = (contactElement, card, arrayContactsBeforeEdition, editedContacts, contactsInModal) => {
+const editChoosenContact = (arrayContactsBeforeEdition, editedContacts, contactsInModal) => {
     // make ContactsArray where edited Contact was
     const newContactsArray = arrayContactsBeforeEdition.filter((el) => JSON.stringify(el) !== JSON.stringify(editedContacts))
     globalArrContacts = newContactsArray
@@ -151,8 +165,6 @@ editModalBtn.addEventListener('click', function () {
     const phone = document.querySelector('.js-edit-phone-input')
 
     const errorsAndContactArr = validateValues(name, vacancy, phone)
-    console.log(errorsAndContactArr)
-    console.log(Object.values(errorsAndContactArr?.errors).filter((item) => item)?.length)
     const isErrors = Object.values(errorsAndContactArr?.errors).filter((item) => item)?.length > 0
     console.log(isErrors)
     const contacts = {
@@ -163,7 +175,7 @@ editModalBtn.addEventListener('click', function () {
     if (!isErrors) {
         removeMistakesSpans()
         setTimeout(toggleEditPopUp, 500)
-        editChoosenContact(globalElement, globalCard, globalArrContacts, globalContact, contacts)
+        editChoosenContact(globalArrContacts, globalContact, contacts)
     } else {
         console.log('addErrorsToPage')
         addErrorsToPage(errorsAndContactArr?.errors, name, vacancy, phone)
@@ -173,7 +185,17 @@ editModalBtn.addEventListener('click', function () {
 const createListEl = (filteredContact, boxForContacts, card) => {
     globalCard = card
     const element = document.createElement('li')
-    element.innerHTML = `${filteredContact.name} ${filteredContact.vacancy} ${filteredContact.phone}`
+    const p1 = document.createElement('p')
+    p1.innerHTML = filteredContact.name
+    const p2 = document.createElement('p')
+    const p3 = document.createElement('p')
+    p1.innerHTML = `-${filteredContact.name}`
+    p2.innerHTML = `-${filteredContact.vacancy}`
+    p3.innerHTML = `${filteredContact.phone}`
+    element?.appendChild(p1)
+    element?.appendChild(p2)
+    element?.appendChild(p3)
+    // element.innerHTML = `${filteredContact.name} ${filteredContact.vacancy} ${filteredContact.phone}`
     boxForContacts?.appendChild(element)
     createDeleteBtn(element, filteredContact)
     createEditBtn(element, filteredContact)
