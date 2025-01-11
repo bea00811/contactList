@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage" :"https://bea00811.github.io/contactList",
   "scripts": {
     "start": "webpack serve",
     "build": "webpack"
