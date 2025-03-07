@@ -1,2 +1,2 @@
 # contactList
-little ContactList book 
+little ContactList book made by VanillaJS no libraries
